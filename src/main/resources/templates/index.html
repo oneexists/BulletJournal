@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common-head :: common_head(~{::title},~{})">
+	<title>Bullet Journal</title>
+</head>
+<body>
+<div th:insert="~{fragments/login-header :: navigation}"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>Bullet Journal Homepage</h1>
+			<p>Create a digital copy of your Bullet Journal collection pages.</p>
+			<p>
+				Keep track of reading habits using the Bookshelf, track reading habits
+				by langauge and easily view a list of in progress books.
+			</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common-head :: common_head(~{::title},~{})">
+	<title>Bullet Journal</title>
+</head>
+<body>
+<div th:insert="~{fragments/user-header :: navigation}"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<h1>Dashboard</h1>
+			<br>
+			<table class="table">
+			<legend>Reading Summary</legend>
+				<thead>
+					<tr>
+						<th>Language</th>
+						<th>Total Pages</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="language: ${languages}">
+						<td th:text="${language.key}"></td>
+						<td th:text="${#aggregates.sum(language.value.![book.pages])}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
+			<table class="table">
+			<legend>Currently Reading</legend>
+				<thead>
+					<th>Title</th>
+					<th>Language</th>
+					<th>Pages</th>
+				</thead>
+				<tbody>
+					<tr th:each="log: ${currentlyReading}">
+						<td th:text="${log.book.title}"></td>
+						<td th:text="${log.book.language}"></td>
+						<td th:text="${log.book.pages}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

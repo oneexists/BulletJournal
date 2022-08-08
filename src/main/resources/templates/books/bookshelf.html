@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common-head :: common_head(~{::title},~{})">
+	<title>Bullet Journal</title>
+</head>
+<body>
+<div th:insert="~{fragments/user-header :: navigation}"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<div class="text-center">
+				<h1>Bookshelf</h1>
+				<button type="button" class="btn btn-light"><a href="/books/add">Add Book</a></button>
+				<button type="button" class="btn btn-light"><a href="/logs/all">View Reading Logs</a></button>
+			</div>
+			<br>
+			<table class="table" th:unless="${books == null}">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Language</th>
+						<th>Pages</th>
+						<th>Edit Book</th>
+						<th>Delete Book</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="book: ${books}">
+			            <td><a th:href="@{/books/{id}(id=${book.id})}"><span th:text="${book.title}" /></a></td>
+			            <td th:text="${book.author.name}"></td>
+			            <td th:text="${book.language}"></td>
+			            <td th:text="${book.pages}"></td>
+			            <td><a th:href="@{/books/edit{id}(id=${book.id})}" class="btn btn-light">Edit</a></td>
+			            <td><a th:href="@{/books/delete{id}(id=${book.id})}" class="btn btn-light">Remove</a></td>
+			        </tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

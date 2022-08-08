@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/common-head :: common_head(~{::title},~{})">
+	<title>Add Log</title>
+</head>
+<body>
+<div th:insert="~{fragments/user-header :: navigation}"></div>
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<form th:action="@{/logs/update}" th:object="${book}" method="post">
+			<input type="hidden" th:field="*{username}" id="username">
+			<input type="hidden" th:field="*{bookId}" id="bookId">
+			<input type="hidden" th:field="*{logId}" id="logId">
+			<input type="hidden" th:field="*{title}" id="title">
+			<input type="hidden" th:field="*{author}" id="author">
+			<input type="hidden" th:field="*{language}" id="language">
+			<input type="hidden" th:field="*{pages}" id="pages">
+			<div class="text-center">
+				<h1>Add New Log</h1>
+				<p th:text="*{title + ' by ' + author}"></p>
+			</div>
+			<div th:if="${#fields.hasAnyErrors()}">
+				<ul>
+					<li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+				</ul>
+			</div>
+			<div class="form-group">
+				<label for="start">Start:</label>
+				<input id="start" class="form-control" type="date" th:field="*{{start}}" required autofocus="autofocus" />
+			</div>
+			<div class="form-group">
+				<label for="finish">Finish:</label>
+				<input id="finish" class="form-control" type="date" th:field="*{{finish}}" />
+			</div>
+			<div class="text-center">
+				<button type="submit" class="btn btn-success">Update Log</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>

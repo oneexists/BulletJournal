@@ -1,0 +1,11 @@
+<head th:fragment="common_head(title,links)">
+  <meta charset="UTF-8">
+  <title th:replace="${title}">Bookshelf</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Common styles and scripts -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!--/* Per-page placeholder for additional links */-->
+  <th:block th:replace="${links}" />
+
+</head>
