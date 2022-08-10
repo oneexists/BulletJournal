@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Book implements Serializable {
-	private static final long serialVersionUID = 202208001L;
+	private static final long serialVersionUID = 202208002L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -24,6 +24,8 @@ public class Book implements Serializable {
 	private String language;
 	@OneToMany(mappedBy="book")
 	private Set<Log> logs = new HashSet<>();
+	@OneToMany(mappedBy="book")
+	private Set<Quote> quotes = new HashSet<>();
 	@ManyToOne
 	private AppUser appUser;
 	
